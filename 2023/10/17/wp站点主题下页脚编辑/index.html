@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>tool - 1Y</title>
+    <title>wp站点主题下页脚编辑 - 1Y</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="1Y">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="wp站点主题下页脚编辑"/>
     
 <meta name="generator" content="Hexo 6.3.0"></head>
 
@@ -50,56 +50,64 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
+        <section class="post-title">
+            <h2>wp站点主题下页脚编辑</h2>
+            <div class="post-meta">
+                <time class="date">2023.10.17</time>
             
-            <h1>“tool”</h1>
+                <span class="category"><a class="category-link" href="/categories/Diary/">Diary</a></span>
+            
+            </div>
         </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/2023/10/17/wp%E7%AB%99%E7%82%B9%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%A1%B5%E8%84%9A%E7%BC%96%E8%BE%91/">wp站点主题下页脚编辑</a>
-        </h2>
-    
-        <p>00x0前言在上线博客时需要进行网站备案
-发现wp很多主题页脚不支持编辑的问题</p>
-    
-        <div class="post-meta">
-            <time class="date">2023.10.17</time>
-            
-                <span class="category"><a class="category-link" href="/categories/Diary/">Diary</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/example/" rel="tag">example</a>，<a class="-none-link" href="/tags/tool/" rel="tag">tool</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/2023/10/14/spiderfor%E9%B1%BF%E9%B1%BC%E5%B9%B3%E5%8F%B0/">youyu001平台eval解密工具培训</a>
-        </h2>
-    
-        <p>前言一份技术说明书，用于培训与门槛降低
-py为源码，exe为打包后的图形化程序程序
-此工具仅试用于 网页JavaScript应用程序开发 课程</p>
-    
-        <div class="post-meta">
-            <time class="date">2023.10.14</time>
-            
-                <span class="category"><a class="category-link" href="/categories/Diary/">Diary</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/tool/" rel="tag">tool</a></span>
-            
-        </div>
-    </div>
-    
-</section>
+        <article class="post-content">
+        
+            <h3 id="00x0前言"><a href="#00x0前言" class="headerlink" title="00x0前言"></a>00x0前言</h3><p>在上线博客时需要进行网站备案</p>
+<p>发现wp很多主题页脚不支持编辑的问题</p>
+<span id="more"></span>
 
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+<p>[如何在 WordPress 中编辑页脚（4 种方式） - 知乎 (zhihu.com)](<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/594776515#2">https://zhuanlan.zhihu.com/p/594776515#2</a>. 从您的页脚中删除”Powered by WordPress”文本)</p>
+<h3 id="00x1解决思路"><a href="#00x1解决思路" class="headerlink" title="00x1解决思路"></a>00x1解决思路</h3><p>1更换主题（有编辑页脚模块的theme）</p>
+<p>2寻找页脚编辑的wp插件</p>
+<p>3直接更改源代码</p>
+<p>进入服务器管理站点目录下寻找主题，查看设计，改写源代码</p>
+<p>以sweet主题为例</p>
+<p>找到主题对应的footer.php</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20230928194922402.png" alt="image-20230928194922402"></p>
+<p>进行更改</p>
+<p>参考</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20230928195024146.png" alt="image-20230928195024146"></p>
+<p>html注释方法<!--   --></p>
+<h3 id="00x2注意事项"><a href="#00x2注意事项" class="headerlink" title="00x2注意事项"></a>00x2注意事项</h3><p>警告!不惜一切代价避免使用CSS方法!<br>—些WordPress教程网站可能会向您展示一个用于隐藏页脚信用链接的CSS方法。display: none虽然这看起来很简单，但对你的WordPress SEO来说非常糟糕。<br>许多垃圾邮件发送者使用这种确切的技术来隐藏访问者的链接，同时仍然将它们显示给Google，以期获得更高的排名。<br>如果您确实使用CSS隐藏了页脚信用，那么Google可能会将您标记为垃圾邮件发送者，您的网站将失去搜索引擎排名。在最坏的情况下，Google甚至可能会从其索引中删除您的网站，使其永远不会出现在搜索结果中。</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/2023/10/14/spiderfor%E9%B1%BF%E9%B1%BC%E5%B9%B3%E5%8F%B0/">youyu001平台eval解密工具培训</a></li>
+                
+            </ul>
         </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/example/" rel="tag">example</a><a class="-none-link" href="/tags/tool/" rel="tag">tool</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20231018092352859.png" alt="1Ymeman" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>1Ymeman</h4>
+                <p>正在学习当网管中</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 
