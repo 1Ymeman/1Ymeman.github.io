@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>nginx学习记录 - 1Y</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="1Y">
+    <meta property="og:title" content="nginx学习记录"/>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>1Y</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/Diary/">Diary</a><a class="category-link" href="/categories/%E4%B8%8D%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D/">不常见名词</a>
+            </div>
+        </div>
+        
+            <a href="/OWNexamlpe-master/index.html">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>nginx学习记录</h2>
+            <div class="post-meta">
+                <time class="date">2023.10.22</time>
+            
+                <span class="category"><a class="category-link" href="/categories/Diary/">Diary</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在经过对服务安全的检测后发现有一些安全隐患，其中比较明显的问题是关于ip地址能直接被访问，还有希望绑定docker部署的alist项目能通过域名访问，这些问题都能通过nginx的配置进行解决，本次记录分享一下nginx学习的资料，以及一些踩坑后的注意事项。</p>
+<span id="more"></span>
+
+<h3 id="入门学习-概念理解"><a href="#入门学习-概念理解" class="headerlink" title="入门学习+概念理解"></a>入门学习+概念理解</h3><p>（高质量）<a target="_blank" rel="noopener" href="https://juejin.cn/post/7202807471881748540">图解Nginx，系统架构演变 + Nginx反向代理与负载均衡 - 掘金 (juejin.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/tardis/zm/art/101961241?source_id=1005">从原理到实战，彻底搞懂 Nginx！ (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/362315737">nginx学习，看这一篇就够了! - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/345270936">Nginx的学习笔记 - 知乎 (zhihu.com)</a></p>
+<p>（高质量）<a target="_blank" rel="noopener" href="https://github.com/dunwu/nginx-tutorial#%E7%BD%91%E7%AB%99%E6%9C%89%E5%A4%9A%E4%B8%AA-webapp-%E7%9A%84%E9%85%8D%E7%BD%AE">dunwu&#x2F;nginx-tutorial: 这是一个 Nginx 极简教程，目的在于帮助新手快速入门 Nginx。 (github.com)</a></p>
+<p>（高质量）<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/nginx-setup-intro.html">Nginx 配置详解 | 菜鸟教程 (runoob.com)</a></p>
+<p>主要通过上面资料了解nginx基本概率与应用场景，还有nginx的conf文件基本配置规则与语法</p>
+<h3 id="在一个服务器上有多个网站时"><a href="#在一个服务器上有多个网站时" class="headerlink" title="在一个服务器上有多个网站时"></a>在一个服务器上有多个网站时</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yaologos/article/details/113356620">Nginx单服务器部署多个网站，域名_nginx多个网站_yaologos的博客-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://yunbuy.github.io/btweb/bt-jz-dt.html">如何用宝塔面板建站以及创建多个站点？ - 建站教程 (yunbuy.github.io)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.yifree.net/index.php/2023/03/25/%E6%91%B8%E7%B4%A2%E5%9C%A8%E5%AE%9D%E5%A1%94%E4%B8%AD%E7%94%A8%E4%B8%80%E4%B8%AAip%E5%88%9B%E5%BB%BA%E5%A4%9A%E4%B8%AAwordpress%E7%AB%99%E7%82%B9/">摸索在宝塔中用一个IP创建多个wordpress站点 – 云上飞歌 (yifree.net)</a></p>
+<p>最后存在的问题就是：输入网址需要加上端口号，较为不便，查询了网上的解决方案之一，是使用反向代理也就是使用nginx</p>
+<h3 id="通过nginx限制ip无法直接访问"><a href="#通过nginx限制ip无法直接访问" class="headerlink" title="通过nginx限制ip无法直接访问"></a>通过nginx限制ip无法直接访问</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tuyile006/p/15800440.html">nginx只允许域名访问，禁止ip访问 - 小y - 博客园 (cnblogs.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/FengGeBlog/p/14288330.html">网站使用域名访问而禁止ip访问的配置 - 峰哥ge - 博客园 (cnblogs.com)</a></p>
+<p>[宝塔面板如何设置ip不可访问-云服务器知识 (west.cn)](<a target="_blank" rel="noopener" href="https://www.west.cn/docs/63802.html#:~:text=%E5%BE%88%E5%A4%9A%E6%97%B6%E5%80%99%E7%AB%99%E9%95%BF%E9%9C%80%E8%A6%81%E5%9C%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E6%9D%BF%E8%AE%BE%E7%BD%AE%E7%A6%81%E6%AD%A2">https://www.west.cn/docs/63802.html#:~:text=很多时候站长需要在宝塔面板设置禁止</a> ip 访问（防恶意解析），下面我们介绍下不同环境该如何操作。 nginx环境下禁止IP访问 1. 绑定一个默认站点（空闲不用的站点），所有未在宝塔面板绑定的域名都会访问到这个默认站点 2.,修改站点的配置文件，在 server_name 下方添加以下代码（444 可以改成 404 或 502 等错误码）：)</p>
+<h3 id="nginx和apache"><a href="#nginx和apache" class="headerlink" title="nginx和apache"></a>nginx和apache</h3><p>（高质量）<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/315456381">Web服务器王者之争：Apache vs Nginx - 知乎 (zhihu.com)</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>nginx配置保存好后需要重载（reload）才能生效</p>
+<p>在宝塔上配置nginx需要小心，最好不要乱动全局nginx配置，配置单个站点就够了</p>
+<p>配置nginx时注意端口占用和冲突，在有这种情况时nginx会无法重载，也无法重启</p>
+<p>配置过程前保留原代码…</p>
+<p>宝塔面板自动配置的nginx最好别乱动，会导致奇奇怪怪的bug–</p>
+<p>本人在重启nginx时虽然配置文件和原来一模一样但是就是报错php74相关问题，本人在查看日志后直接选择关闭站点的php环境就能重新启动，nginx启动后在启动php环境（太抽象了现在也没想明白怎么回事）</p>
+<p><a target="_blank" rel="noopener" href="https://www.bt.cn/bbs/thread-64969-1-1.html">nginx启动不了的N种常见报错情况的解决教程 - Linux面板 - 宝塔面板论坛 (bt.cn)</a></p>
+<p>所以大项目还是手工配nginx吧，一键面板确实不方便…</p>
+<p>浏览器会有缓存影响查看，有时候配置生效了但是在这个浏览器里仍然无法访问…还有我直接把站点删除，这个浏览器仍然能访问，非常有误导性…</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/2023/10/19/git%E4%BD%BF%E7%94%A8%E6%8E%92%E9%94%99/">git踩坑记录</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/tool/" rel="tag">tool</a><a class="-none-link" href="/tags/%E5%88%86%E4%BA%AB/" rel="tag">分享</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20231018092352859.png" alt="1Ymeman" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>1Ymeman</h4>
+                <p>正在学习当网管中</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/22/nginx%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">nginx学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/19/git%E4%BD%BF%E7%94%A8%E6%8E%92%E9%94%99/">git踩坑记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/18/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E6%96%87/">技术和技能：工具还是终极目标？</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/17/wp%E7%AB%99%E7%82%B9%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%A1%B5%E8%84%9A%E7%BC%96%E8%BE%91/">wp站点主题下页脚编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/14/spiderfor%E9%B1%BF%E9%B1%BC%E5%B9%B3%E5%8F%B0/">youyu001平台eval解密工具培训</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/14/%E5%B7%A6%E5%8F%B3%E4%BA%92%E6%90%8F-wp_cms%E8%87%AA%E6%94%BB%E8%87%AA%E9%98%B21/">左右互搏wp_cms-简单测试</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/example/" style="font-size: 15px;">example</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/tool/" style="font-size: 20px;">tool</a> <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 20px;">分享</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%B0%8F%E5%AD%90/" style="font-size: 10px;">脚本小子</a> <a href="/tags/%E8%BD%AC%E5%8F%91/" style="font-size: 15px;">转发</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">1Y</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+  </body>
+</html>

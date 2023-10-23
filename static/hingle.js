@@ -6,7 +6,6 @@
 
 一个简洁大气，含夜间模式的 Hexo 博客模板。
 
-本代码为奇趣保罗原创，并遵守 MIT 开源协议。欢迎访问我的博客：https://paugram.com
 
 ---- */
 
@@ -156,7 +155,7 @@ var Paul_Hingle = function (config) {
     // 如果开启复制内容提示
     if(config.copyright){
         document.oncopy = function () {
-            ks.notice("复制内容请注明来源并保留版权信息！", {color: "yellow", overlay: true})
+            ks.notice("内容具有阶段性和局限性，复制注明来源就好了！", {color: "yellow", overlay: true})
         };
     }
 
