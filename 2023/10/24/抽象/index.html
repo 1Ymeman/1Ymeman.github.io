@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>太抽象了！震惊！这也能挖到漏洞！ - 1Y</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="1Y">
+    <meta property="og:title" content="太抽象了！震惊！这也能挖到漏洞！"/>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>1Y</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/Diary/">Diary</a><a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            </div>
+        </div>
+        
+            <a href="/OWNexamlpe-master/index.html">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>太抽象了！震惊！这也能挖到漏洞！</h2>
+            <div class="post-meta">
+                <time class="date">2023.10.24</time>
+            
+                <span class="category"><a class="category-link" href="/categories/Diary/">Diary</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>偶然刷到一篇别人记录挖漏洞的文章，突然发现前几天的自娱自乐也不是没有意义的。</p>
+<p>没想到真的有人用wordpress有漏洞的插件就算了，还把wp后台在能公网访问的情况下使用弱口令——可以说非常抽象了？咱也不知道是不是真的？</p>
+<p>顺便推荐一两个高质量文章进行对比</p>
+<span id="more"></span>
+
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>上次的娱乐自测</p>
+<p><a target="_blank" rel="noopener" href="https://1ymeman.github.io/2023/10/14/%E5%B7%A6%E5%8F%B3%E4%BA%92%E6%90%8F-wp_cms%E8%87%AA%E6%94%BB%E8%87%AA%E9%98%B21/">左右互搏wp_cms-简单测试 - 1Y (1ymeman.github.io)</a></p>
+<p>抽象的edusrc文章链接</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/TI8jLTbCTShQJUR4JUAC5g">edusrc系列（八）：WordPress，你原来这样玩！！！！ (qq.com)</a></p>
+<h2 id="Surprise"><a href="#Surprise" class="headerlink" title="Surprise"></a>Surprise</h2><p>再附上一个比较有用的挖漏洞经历链接推荐–2023&#x2F;10&#x2F;24的今天明显还可以用</p>
+<p>同样是挖洞质量不一样呀</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/b9Y6Ak1upXFhP66LjkNgxQ">记一个 XSS 通杀0day (qq.com)</a></p>
+<p>下面这个更complex</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/w_xvVrCQb0cZjbBysPW09w">记一次遗憾的0day捡漏日记 (qq.com)</a></p>
+<p>下面是防止原文被删除直接复制的，如有影响联系本人马上删除</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><p>前端时间，要开放一个端口，让我进行一次安全检测，发现的一个漏洞。</p>
+<h2 id="经过"><a href="#经过" class="headerlink" title="经过"></a><strong>经过</strong></h2><p>访问之后发现是类似一个目录索引的端口。(这里上厚码了哈)</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505182" alt="图片"></p>
+<h3 id="错误案例测试"><a href="#错误案例测试" class="headerlink" title="错误案例测试"></a>错误案例测试</h3><p>乱输内容<code>asdasffda</code>之后看了一眼<code>Burp</code>的抓包，抓到的内容是可以发现这是一个什么类型的服务 ——<code>ZLMediaKit</code></p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505426" alt="图片"></p>
+<p>这里就引出了一个问题，存在文件索引算不算漏洞？还是业务需要？</p>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>清楚是什么类型的内容，当然就要去公开搜索一下</p>
+<p>首先搜索内容原理</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505781" alt="图片"></p>
+<p>通过搜索官网，大致清楚了内容，需要进行视频流转，但是还不能打消我的疑问</p>
+<hr>
+<p>所以我进入了<code>CVE</code>进行搜索，查看是否存在什么历史漏洞</p>
+<pre class="line-numbers language-none"><code class="language-none">https:&#x2F;&#x2F;cve.mitre.org&#x2F;cgi-bin&#x2F;cvekey.cgi?keyword&#x3D;ZLMediaKit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505688" alt="图片"></p>
+<p>翻译了一下说是存在目录遍历攻击和<code>DDOS</code></p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505760" alt="图片"></p>
+<p>查看了<code>CNNVD</code>也差不多是这个意思</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505844" alt="图片"></p>
+<h3 id="渗透测试"><a href="#渗透测试" class="headerlink" title="渗透测试"></a>渗透测试</h3><p>所以遍历就确实是漏洞</p>
+<h4 id="推测XSS"><a href="#推测XSS" class="headerlink" title="推测XSS"></a>推测XSS</h4><p>之后专心进行渗透测试，发现我翻阅目录的时候，回显包是存在回显的<br>推测应该是有反射<code>XSS</code></p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505627" alt="图片"></p>
+<p>专心的构造了一个跳出<code>&lt;h1&gt;</code>标签的反射<code>XSS</code></p>
+<p>- </p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;&#x2F;h1&gt;alert(1);&lt;h1&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="XSS失败"><a href="#XSS失败" class="headerlink" title="XSS失败"></a>XSS失败</h4><p>访问之后才发现如果访问不存在的页面会跳转到<code>404</code>回显失败</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241505321" alt="图片"></p>
+<h4 id="目录穿越测试"><a href="#目录穿越测试" class="headerlink" title="目录穿越测试"></a>目录穿越测试</h4><p>因为容易目录遍历，所以进行了一下目录穿越测试</p>
+<p>- </p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这时候发现不存在的内容也可以回显的样子</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504114" alt="图片"></p>
+<h4 id="目录穿越-XSS"><a href="#目录穿越-XSS" class="headerlink" title="目录穿越+XSS"></a>目录穿越+XSS</h4><p>这给了我灵感，我可以在最后加上<code>XSS</code>语句</p>
+<p>- </p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd&#x2F;&lt;&#x2F;h1&gt;alert(1);&lt;h1&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>成功逃逸出来了ohhhh</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504031" alt="图片"></p>
+<p>兴高采烈的将这个<code>payload</code>拼接到浏览器进行尝试发现失败了</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504603" alt="图片"></p>
+<p>因为<code>../../../../</code>直接被<code>GET</code>吃掉了，决定利用<code>Burp</code>对其进行<code>url</code>编码</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504733" alt="图片"></p>
+<p>- </p>
+<pre class="line-numbers language-none"><code class="language-none">%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%65%74%63%2f%70%61%73%73%77%64%2f%3c%2f%68%31%3e%3c%73%63%72%69%70%74%3e%61%6c%65%72%74%28%31%29%3b%3c%2f%73%63%72%69%70%74%3e%3c%68%31%3e<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>XSS</code>反射成功</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504540" alt="图片"></p>
+<p>最后精简了一下<code>payload</code></p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;..&#x2F;alert(1);
+%2f%2e%2e%2f%3c%73%63%72%69%70%74%3e%61%6c%65%72%74%28%31%29%3b%3c%2f%73%63%72%69%70%74%3e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504468" alt="图片"></p>
+<p>接着美滋滋提交CVE</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504238" alt="图片"></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a><strong>后记</strong></h2><p>该漏洞的前置条件是内部必须有文件，在有文件的情况下测试了一下，全版本都存在该问题。</p>
+<p>网上这类型的站点还是比较多的，目前貌似还是<code>0day</code></p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/202310241504624" alt="图片"></p>
+<p>CVE是暂未公开状态</p>
+<p><img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/640" alt="图片"></p>
+<p>作者：杳若，来自FreeBuf.COM</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/2023/10/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/">计算机网络复习</a></li>
+                
+                
+                    <li>下一篇: <a href="/2023/10/22/nginx%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">nginx学习记录</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/%E6%8A%BD%E8%B1%A1%E6%B4%BE/" rel="tag">抽象派</a><a class="-none-link" href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag">网络安全</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20231018092352859.png" alt="1Ymeman" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>1Ymeman</h4>
+                <p>正在学习当网管中</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/">计算机网络复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/%E6%8A%BD%E8%B1%A1/">太抽象了！震惊！这也能挖到漏洞！</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/22/nginx%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">nginx学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/19/git%E4%BD%BF%E7%94%A8%E6%8E%92%E9%94%99/">git踩坑记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/18/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E6%96%87/">技术和技能：工具还是终极目标？</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/17/wp%E7%AB%99%E7%82%B9%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%A1%B5%E8%84%9A%E7%BC%96%E8%BE%91/">wp站点主题下页脚编辑</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/example/" style="font-size: 15px;">example</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/tool/" style="font-size: 20px;">tool</a> <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 20px;">分享</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E6%B4%BE/" style="font-size: 10px;">抽象派</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15px;">网络安全</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%B0%8F%E5%AD%90/" style="font-size: 10px;">脚本小子</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 10px;">计算机网络八股文</a> <a href="/tags/%E8%BD%AC%E5%8F%91/" style="font-size: 15px;">转发</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">1Y</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+  </body>
+</html>
