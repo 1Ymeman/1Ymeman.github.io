@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>计算机网络八股文 - 1Y</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="1Y">
+    <meta property="og:title" content="计算机网络八股文"/>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>1Y</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/Diary/">Diary</a><a class="category-link" href="/categories/%E4%B8%8D%E5%B8%B8%E8%A7%81%E5%90%8D%E8%AF%8D/">不常见名词</a><a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            </div>
+        </div>
+        
+            <a href="/OWNexamlpe-master/index.html">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>计算机网络八股文</h2>
+            <div class="post-meta">
+                <time class="date">2023.10.24</time>
+            
+                <span class="category"><a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>Welcome to 计算机网络八股文！</p>
+<span id="more"></span>
+
+<h3 id="ICMP-协议"><a href="#ICMP-协议" class="headerlink" title="ICMP 协议"></a>ICMP 协议</h3><p>ICMP协议的类型分为两大类，查询报文和差错报文。</p>
+<p>从 ICMP 的报文格式来说，ICMP 是 IP 的上层协议。但是 ICMP 是分担了 IP 的一部分功能。所以，他也被认为是与 IP 同层的协议。下面一起来看一下 ICMP 数据包格式和报文内容吧。具体参考下图：</p>
+<h3 id="ICMP协议实现–Ping命令？ping和tracert区别"><a href="#ICMP协议实现–Ping命令？ping和tracert区别" class="headerlink" title="ICMP协议实现–Ping命令？ping和tracert区别"></a>ICMP协议实现–Ping命令？ping和tracert区别</h3><p><strong>Ping</strong>可以告诉用户目标是否可达，而<strong>Tracert</strong>命令用于测试数据包从发送主机到目的地所经过的设备，它主要检查网络连接是否可达，以及分析网络什么地方发生了故障。</p>
+<h3 id="tcp协议和udp协议"><a href="#tcp协议和udp协议" class="headerlink" title="tcp协议和udp协议"></a>tcp协议和udp协议</h3><p>TCP 是可靠的传输协议，但传输速度慢；</p>
+<p> TCP的适用场景： 要求通信数据的完整性和准确性较高，eg: 文件传输、邮件发送与接收、重要状态的更新等。</p>
+<p>tcp3次握手的特点:没有应用层的数据 ,SYN这个标志位只有在TCP建立连接时才会被置1 ,握手完成后SYN标志位被置0。</p>
+<p>而 UDP 是不可靠(非连接)的传输协议，但传输速度快；  </p>
+<p>UDP的适用场景： 要求通信的响应度高，对数据信息的安全性和完整性要求相对较低，常用于实时通信，eg: 网络电话、网络视频、实时通信等。</p>
+<p>UDP使用尽最大努力交付，即不保证可靠交付， 因此主机不需要维持复杂的链接状态表（这里面有许多参数）。</p>
+<p>UDP信息包的标题很短，只有8个字节，相对于TCP的20个字节信息包的额外开销很小。</p>
+<h3 id="什么是-SYN洪泛攻击？如何防范？"><a href="#什么是-SYN洪泛攻击？如何防范？" class="headerlink" title="什么是 SYN洪泛攻击？如何防范？"></a>什么是 SYN洪泛攻击？如何防范？</h3><p>SYN洪泛攻击属于 DOS 攻击的一种，它利用 TCP 协议缺陷，通过发送大量的半连接请求，耗费 CPU 和内存资源。</p>
+<p>原理：</p>
+<ul>
+<li>在三次握手过程中，服务器发送 <code>[SYN/ACK]</code> 包（第二个包）之后、收到客户端的 <code>[ACK]</code> 包（第三个包）之前的 TCP 连接称为半连接（half-open connect），此时服务器处于 <code>SYN_RECV</code>（等待客户端响应）状态。如果接收到客户端的 <code>[ACK]</code>，则 TCP 连接成功，如果未接受到，则会<strong>不断重发请求</strong>直至成功。</li>
+<li>SYN 攻击的攻击者在短时间内<strong>伪造大量不存在的 IP 地址</strong>，向服务器不断地发送 <code>[SYN]</code> 包，服务器回复 <code>[SYN/ACK]</code> 包，并等待客户的确认。由于源地址是不存在的，服务器需要不断的重发直至超时。</li>
+<li>这些伪造的 <code>[SYN]</code> 包将长时间占用未连接队列，影响了正常的 SYN，导致目标系统运行缓慢、网络堵塞甚至系统瘫痪。</li>
+</ul>
+<p>检测：当在服务器上看到大量的半连接状态时，特别是源 IP 地址是随机的，基本上可以断定这是一次 SYN 攻击。</p>
+<p>防范：</p>
+<ul>
+<li>通过防火墙、路由器等过滤网关防护。</li>
+<li>通过加固 TCP&#x2F;IP 协议栈防范，如增加最大半连接数，缩短超时时间。</li>
+<li>SYN cookies技术。SYN Cookies 是对 TCP 服务器端的三次握手做一些修改，专门用来防范 SYN 洪泛攻击的一种手段。</li>
+</ul>
+<h3 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h3><p>是根据 IP地址 获取 物理地址 的一个 TCP&#x2F;IP协议</p>
+<h3 id="DHCP协议"><a href="#DHCP协议" class="headerlink" title="DHCP协议"></a>DHCP协议</h3><p>DHCP（Dynamic Host Configuration Protocol，动态主机配置协议），前身是BOOTP协议，是一个局域网的网络协议，使用UDP协议工作，统一使用两个IANA分配的端口：67（服务器端），68（客户端）。DHCP通常被用于局域网环境，主要作用是集中的管理、分配IP地址，使client动态的获得IP地址、Gateway地址、DNS服务器地址等信息，并能够提升地址的使用率。简单来说，DHCP就是一个不需要账号密码登录的、自动给内网机器分配IP地址等信息的协议。</p>
+<h3 id="ospf"><a href="#ospf" class="headerlink" title="ospf"></a>ospf</h3><p>OSPF（Open Shortest Path First，开放最短路径优先）是IETF（Internet Engineering Task Force，互联网工程任务组）组织开发的一个基于链路状态的自治系统内部网关协议。目前针对IPv4协议使用的是OSPF Version 2。ospf直接工作在ip层之上，ip协议号89，ospf以组播方式发送协议包！</p>
+<p>链路状态路由协议使用SPF最短路经优先算法（shortest path first spf）计算和选择路由，这类路由协议只关心网络中链路或接口的状态（up down ip地址，掩码带宽，利用率和时延等），每个路由器将已知的链路状态信息向该区域的其他路由器通告，通过这种方式，网络上的每台路由器对网络结构都会有相同的认识，随后路由器以其为依据，使用spf算法计算和选择路由</p>
+<p>224.0.0.1 所有组播主机。 </p>
+<p>224.0.0.2 所有组播路由器。 </p>
+<p>224.0.0.4 DRMRP 路由器。 </p>
+<p>224.0.0.5 所有 OSPF 的路由器。 </p>
+<p>224.0.0.6 OSPF 指派路由器。 </p>
+<p>224.0.0.9 RPIv2 路由器。</p>
+<h3 id="ip地址分类"><a href="#ip地址分类" class="headerlink" title="ip地址分类"></a>ip地址分类</h3><p>10.0.0.0～10.255.255.255172.16.0.0～172.31.255.255192.168.0.0～192.168.255.255组播:224.0.0.0～239.255.255.255 </p>
+<h3 id="常用端口及端口功能"><a href="#常用端口及端口功能" class="headerlink" title="常用端口及端口功能"></a>常用端口及端口功能</h3><p> 21：FTP </p>
+<p>22：ssh</p>
+<p>23:Telnet</p>
+<p> 43：whois-server </p>
+<p> 53：DNS </p>
+<p> 443：HTTPS </p>
+<p>ORACLE的表名和列名都是不区分大小写的，</p>
+<p> 端口映射是NAT的一种，分为静态和动态端口映射； </p>
+<p> 端口镜像指的是将一个或多个端口的流量信息转发到另一个端口上，实现对这些端口的监听； </p>
+<p> 端口复用指的是在系统已开放的端口上进行通讯,只对输入的信息进行字符匹配,不对网络数据进行任何拦截、复制类操作；</p>
+<p>端口扫描指的是对某一段指定的端口进行扫描，确定其是否开启以及开启了哪些服务，根据其服务的漏洞进行攻击。</p>
+<h3 id="HTTP常见的状态码有哪些？"><a href="#HTTP常见的状态码有哪些？" class="headerlink" title="HTTP常见的状态码有哪些？"></a>HTTP常见的状态码有哪些？</h3><p>常见状态码：</p>
+<ul>
+<li>200：服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。</li>
+<li>301 ： (永久移动) 请求的网页已永久移动到新位置。 服务器返回此响应(对 GET 或 HEAD 请求的响应)时，会自动将请求者转到新位置。</li>
+<li>302：(临时移动) 服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求。</li>
+<li>400 ：客户端请求有语法错误，不能被服务器所理解。</li>
+<li>403 ：服务器收到请求，但是拒绝提供服务。</li>
+<li>404 ：(未找到) 服务器找不到请求的网页。</li>
+<li>500： (服务器内部错误) 服务器遇到错误，无法完成请求。</li>
+</ul>
+<h3 id="HTTP-常用的请求方式？"><a href="#HTTP-常用的请求方式？" class="headerlink" title="HTTP 常用的请求方式？"></a>HTTP 常用的请求方式？</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取资源</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>传输实体主体</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>上传文件</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>和GET方法类似，但只返回报文首部，不返回报文实体主体部分</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>对资源进行部分修改</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>查询指定的URL支持的方法</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>要求用隧道协议连接代理</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>服务器会将通信路径返回给客户端</td>
+</tr>
+</tbody></table>
+<p>为了方便记忆，可以将PUT、DELETE、POST、GET理解为客户端对服务端的增删改查。</p>
+<ul>
+<li>PUT：上传文件，向服务器添加数据，可以看作增</li>
+<li>DELETE：删除文件</li>
+<li>POST：传输数据，向服务器提交数据，对服务器数据进行更新。</li>
+<li>GET：获取资源，查询服务器资源</li>
+</ul>
+<h3 id="TCP-IP网络模型有几层？由下至上分别为哪几层？"><a href="#TCP-IP网络模型有几层？由下至上分别为哪几层？" class="headerlink" title="TCP&#x2F;IP网络模型有几层？由下至上分别为哪几层？"></a><strong>TCP&#x2F;IP网络模型有几层？由下至上分别为哪几层？</strong></h3><p>5层，物理层、数据链路层、网络层、传输层、应用层。或4层，网络接口层、网络层、传输层、应用层</p>
+<p>RIP&amp;OSPF管理距离分别是：120和110 </p>
+<p>1．RIP协议一条路由有15跳（网关或路由器）的限制，如果一个RIP网络路由跨越超过15跳（路由器），则它认为网络不可到达，而OSPF对跨越路由器的个数没有限制。 </p>
+<p>2．OSPF协议支持可变长度子网掩码（VLSM），RIP则不支持，这使得RIP协议对当前IP地址的缺乏和可变长度子网掩码的灵活性缺少支持。 </p>
+<p>3．RIP协议不是针对网络的实际情况而是定期地广播路由表，这对网络的带宽资源是个极大的浪费，特别对大型的广域网。OSPF协议的路由广播更新只发生在路由状态变化的时候，采用IP多路广播来发送链路状态更新信息，这样对带宽是个节约。 </p>
+<p>4．RIP网络是一个平面网络，对网络没有分层。OSPF在网络中建立起层次概念，在自治域中可以划分网络域，使路由的广播限制在一定的范围内，避免链路中继资源的浪费。</p>
+<p> 5．OSPF在路由广播时采用了授权机制，保证了网络安全。</p>
+<h3 id="GET请求和POST请求的区别？"><a href="#GET请求和POST请求的区别？" class="headerlink" title="GET请求和POST请求的区别？"></a>GET请求和POST请求的区别？</h3><p><strong>使用上的区别</strong>：</p>
+<ul>
+<li>GET使用URL或Cookie传参，而POST将数据放在BODY中”，这个是因为HTTP协议用法的约定。</li>
+<li>GET方式提交的数据有长度限制，则POST的数据则可以非常大”，这个是因为它们使用的操作系统和浏览器设置的不同引起的区别。</li>
+<li>POST比GET安全，因为数据在地址栏上不可见”，这个说法没毛病，但依然不是GET和POST本身的区别。</li>
+</ul>
+<p><strong>本质区别</strong></p>
+<p>GET和POST最大的区别主要是GET请求是幂等性的，POST请求不是。这个是它们本质区别。</p>
+<p>幂等性是指一次和多次请求某一个资源应该具有同样的副作用。简单来说意味着对同一URL的多个请求应该返回同样的结果。</p>
+<h3 id="解释一下HTTP长连接和短连接？"><a href="#解释一下HTTP长连接和短连接？" class="headerlink" title="解释一下HTTP长连接和短连接？"></a>解释一下HTTP长连接和短连接？</h3><p>（响应头有加入这行代码：<code>Connection:keep-alive</code>)</p>
+<p>（<strong>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</strong>）</p>
+<p><strong>在HTTP&#x2F;1.0中，默认使用的是短连接</strong>。也就是说，浏览器和服务器每进行一次HTTP操作，就建立一次连接，但任务结束就中断连接。如果客户端浏览器访问的某个HTML或其他类型的 Web页中包含有其他的Web资源，如JavaScript文件、图像文件、CSS文件等；当浏览器每遇到这样一个Web资源，就会建立一个HTTP会话。</p>
+<p>但从 <strong>HTTP&#x2F;1.1起，默认使用长连接</strong>，用以保持连接特性。使用长连接的HTTP协议，会在响应头有加入这行代码：<code>Connection:keep-alive</code></p>
+<p>在使用长连接的情况下，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的 TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接。Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同的服务器软件（如Apache）中设定这个时间。实现长连接要客户端和服务端都支持长连接。</p>
+<h3 id="HTTP-与-HTTPS-的区别？"><a href="#HTTP-与-HTTPS-的区别？" class="headerlink" title="HTTP 与 HTTPS 的区别？"></a>HTTP 与 HTTPS 的区别？</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>HTTP</th>
+<th>HTTPS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>端口</td>
+<td>80</td>
+<td>443</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>无加密，安全性较差</td>
+<td>有加密机制，安全性较高</td>
+</tr>
+<tr>
+<td>资源消耗</td>
+<td>较少</td>
+<td>由于加密处理，资源消耗更多</td>
+</tr>
+<tr>
+<td>是否需要证书</td>
+<td>不需要</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>协议</td>
+<td>运行在TCP协议之上</td>
+<td>运行在SSL协议之上，SSL运行在TCP协议之上</td>
+</tr>
+</tbody></table>
+<h3 id="osi7层模型"><a href="#osi7层模型" class="headerlink" title="osi7层模型"></a>osi7层模型</h3><p>![img](C:\Users\boot\Pictures\Saved Pictures\1693702131553-dd349389-5be3-46b6-809d-68d0fd17a60f.webp)</p>
+<h3 id="在浏览器中输入后执行的全部过程？"><a href="#在浏览器中输入后执行的全部过程？" class="headerlink" title="在浏览器中输入后执行的全部过程？"></a>在浏览器中输入后执行的全部过程？</h3><ol>
+<li>域名解析（域名 <a href="https://link.zhihu.com/?target=http://www.baidu.com/">www.baidu.com </a>变为 ip 地址）。<br><strong>浏览器搜索自己的DNS缓存</strong>（维护一张域名与IP的对应表）；若没有，则搜索<strong>操作系统的DNS缓存</strong>（维护一张域名与IP的对应表）；若没有，则搜索操作系统的<strong>hosts文件</strong>（维护一张域名与IP的对应表）。<br>若都没有，则找 tcp&#x2F;ip 参数中设置的首选 dns 服务器，即<strong>本地 dns 服务器</strong>（递归查询），<strong>本地域名服务器查询自己的dns缓存</strong>，如果没有，则进行迭代查询。将本地dns服务器将IP返回给操作系统，同时缓存IP。</li>
+<li>发起 tcp 的三次握手，建立 tcp 连接。浏览器会以一个随机端口（1024-65535）向服务端的 web 程序 <strong>80</strong> 端口发起 tcp 的连接。</li>
+<li>建立 tcp 连接后发起 http 请求。</li>
+<li>服务器响应 http 请求，客户端得到 html 代码。服务器 web 应用程序收到 http 请求后，就开始处理请求，处理之后就返回给浏览器 html 文件。</li>
+<li>浏览器解析 html 代码，并请求 html 中的资源。</li>
+<li>浏览器对页面进行渲染，并呈现给用户。</li>
+</ol>
+<h3 id="什么Cookie和Session"><a href="#什么Cookie和Session" class="headerlink" title="什么Cookie和Session"></a>什么Cookie和Session</h3><p>Web Cookie或浏览器 Cookie</p>
+<p>Session 代表着服务器和客户端一次会话的过程。Session 对象存储特定用户会话所需的属性及配置信息。这样，当用户在应用程序的 Web 页之间跳转时，存储在 Session 对象中的变量将不会丢失，而是在整个用户会话中一直存在下去。</p>
+<p>SessionID 是连接 Cookie 和 Session 的一道桥梁，大部分系统也是根据此原理来验证用户登录状态。</p>
+<ul>
+<li>作用范围不同，Cookie 保存在客户端（浏览器），Session 保存在服务器端。</li>
+<li>存取方式的不同，Cookie 只能保存 ASCII，Session 可以存任意数据类型，一般情况下我们可以在 Session 中保持一些常用变量信息，比如说 UserId 等。</li>
+<li>有效期不同，Cookie 可设置为长时间保持，比如我们经常使用的默认登录功能，Session 一般失效时间较短，客户端关闭或者 Session 超时都会失效。</li>
+<li>隐私策略不同，Cookie 存储在客户端，比较容易遭到不法获取，早期有人将用户的登录名和密码存储在 Cookie 中导致信息被窃取；Session 存储在服务端，安全性相对 Cookie 要好一些。</li>
+<li>存储大小不同， 单个 Cookie 保存的数据不能超过 4K，Session 可存储数据远高于 Cookie。</li>
+</ul>
+<h3 id="RAID磁盘"><a href="#RAID磁盘" class="headerlink" title="RAID磁盘"></a>RAID磁盘</h3><p>RAID 0：条带化存储，最少需要两块磁盘，数据条带式分布 RAID 1：镜像存储，最少需要2块磁盘，提供数据块冗余 RAID 5特点：最少3块磁盘 数据条带形式分布 以奇偶校验作冗余</p>
+<h3 id="NAT-（Network-Address-Translation-网络地址转换协议）"><a href="#NAT-（Network-Address-Translation-网络地址转换协议）" class="headerlink" title="NAT （Network Address Translation-网络地址转换协议）"></a>NAT （Network Address Translation-网络地址转换协议）</h3><p>如同用户登录信息一样，IP和MAC地址在网上无加密传递也很不安全。NAT可把合法IP地址和MAC地址翻译成非法IP地址和MAC地址在网上传递，到达目标路由器后反翻译成合法IP与MAC地址，这一过程有点像CHAP，翻译算法厂商各自有不同标 准，不能实现互操作。</p>
+<h3 id="什么是路由器？什么是路由？"><a href="#什么是路由器？什么是路由？" class="headerlink" title="什么是路由器？什么是路由？"></a>什么是路由器？什么是路由？</h3><p>所谓“路由”，是指把数据从一个地方传送到另一个地方的行为和动作，而路由器，正是执行这种行为动作的机器，它的英文名称为Router,是一种连接多个网络或网段的网络设备，它能将不同网络或网段之间的数据信息进行“翻译”，以使它们能够相互“读懂”对方的数据，从而构成一个更大的网络。</p>
+<p>为了完成“路由”的工作，在路由器中保存着各种传输路径的相关数据－－路由表（Routing Table），供路由选择时使用。路由表中保存着子网的标志信息、网上路由器的个数和下一个路由器的名字等内容。</p>
+<p>1．静态路径表</p>
+<p>2．动态路径表</p>
+<p>路由器具有四个要素：输入端口、输出端口、交换开关和路由处理器。</p>
+<p>路由器的基本协议与技术</p>
+<p>VPN（Virtual Private Network-虚拟专用网）解决方案是路由器具有的重要功能之一。</p>
+<h3 id="新配置一个路由有什么想法、流程？"><a href="#新配置一个路由有什么想法、流程？" class="headerlink" title="新配置一个路由有什么想法、流程？"></a>新配置一个路由有什么想法、流程？</h3><h4 id="路由器中如何设置静态路由"><a href="#路由器中如何设置静态路由" class="headerlink" title="路由器中如何设置静态路由"></a>路由器中如何设置静态路由</h4><p>配置交换机主要是需要理清楚思路，这个静态路由案例中就是四个步骤：<br>1、创建vlan，并将vlan划入相应的端口<br>2、配置各VLANIF接口的IP地址<br>3、配置pc1、pc2、pc3的网关<br>4、配置静态路由</p>
+<h4 id="PART-02动态路由"><a href="#PART-02动态路由" class="headerlink" title="PART.02动态路由"></a><strong>PART.02动态路由</strong></h4><p>动态路由是与静态路由相对的一个概念，指路由器能够根据路由器之间交换的特定路由信息自动建立自己的路由表，并且能够根据链路和节点的变化适时地进行自动调整。</p>
+<p><strong>当网络节点或节点间的链路发生故障，或者存在其它可用路由时候，动态路由可以自行选择“最佳”的可用路由。</strong></p>
+<p>常见的动态路由协议有：</p>
+<p><strong>RIP</strong>（Routing Information Protocol，路由信息协议）、<strong>OSPF</strong>（Open Shortest Path First，开放最短路径优先）、<strong>IS-IS</strong>（Intermediate System-to-Intermediate System，中间系统到中间系统）、<strong>BGP</strong>（Border Gateway Protocol，边界网关协议）。</p>
+<h4 id="静态路由和动态路由区别"><a href="#静态路由和动态路由区别" class="headerlink" title="静态路由和动态路由区别"></a>静态路由和动态路由区别</h4><table>
+<thead>
+<tr>
+<th></th>
+<th>静态路由</th>
+<th>动态路由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>配置复杂性</td>
+<td>随着网络规模的增大而越趋复杂</td>
+<td>通常不受网络规模限制</td>
+</tr>
+<tr>
+<td>管理员所需知识</td>
+<td>不需要额外的专业知识</td>
+<td>需要了解动态路由协议和技能</td>
+</tr>
+<tr>
+<td>拓扑结构变化</td>
+<td>需要管理员参与</td>
+<td>自动根据拓扑变化进行调整</td>
+</tr>
+<tr>
+<td>可扩展性</td>
+<td>适合简单的网络拓扑结构</td>
+<td>简单拓扑结构和复杂拓扑结构都适合</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>更安全</td>
+<td>没有静态路由安全</td>
+</tr>
+<tr>
+<td>资源占用</td>
+<td>不需要额外的资源</td>
+<td>占用CPU、内存和链路带宽</td>
+</tr>
+<tr>
+<td>可预测性</td>
+<td>总是通过同一路径到达目的地</td>
+<td>根据当前网络拓扑结构确定路径</td>
+</tr>
+</tbody></table>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/2023/10/24/%E6%A8%A1%E6%9D%BF/">Hello World</a></li>
+                
+                
+                    <li>下一篇: <a href="/2023/10/22/nginx%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">nginx学习记录</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/" rel="tag">计算机网络八股文</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20231018092352859.png" alt="1Ymeman" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>1Ymeman</h4>
+                <p>正在学习当网管中</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/%E6%A8%A1%E6%9D%BF/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/">计算机网络八股文</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/22/nginx%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">nginx学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/19/git%E4%BD%BF%E7%94%A8%E6%8E%92%E9%94%99/">git踩坑记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/18/%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E6%96%87/">技术和技能：工具还是终极目标？</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/17/wp%E7%AB%99%E7%82%B9%E4%B8%BB%E9%A2%98%E4%B8%8B%E9%A1%B5%E8%84%9A%E7%BC%96%E8%BE%91/">wp站点主题下页脚编辑</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/example/" style="font-size: 15px;">example</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/tool/" style="font-size: 20px;">tool</a> <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 20px;">分享</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 10px;">网络安全</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%B0%8F%E5%AD%90/" style="font-size: 10px;">脚本小子</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 10px;">计算机网络八股文</a> <a href="/tags/%E8%BD%AC%E5%8F%91/" style="font-size: 15px;">转发</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">1Y</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+  </body>
+</html>

@@ -155,7 +155,7 @@ var Paul_Hingle = function (config) {
     // 如果开启复制内容提示
     if(config.copyright){
         document.oncopy = function () {
-            ks.notice("内容具有阶段性和局限性，复制注明来源就好了！", {color: "yellow", overlay: true})
+            ks.notice("内容具有阶段性和局限性，请谨慎使用", {color: "yellow", overlay: true})
         };
     }
 
