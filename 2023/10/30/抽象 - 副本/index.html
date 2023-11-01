@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>学校安排水文章 - 1Y</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="1Y">
+    <meta property="og:title" content="学校安排水文章"/>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>1Y</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/Diary/">Diary</a><a class="category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            </div>
+        </div>
+        
+            <a href="/OWNexamlpe-master/index.html">关于我</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>学校安排水文章</h2>
+            <div class="post-meta">
+                <time class="date">2023.10.30</time>
+            
+                <span class="category"><a class="category-link" href="/categories/Diary/">Diary</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>学校安排水文章</p>
+<span id="more"></span>
+
+
+
+<h3 id="day03安排"><a href="#day03安排" class="headerlink" title="day03安排"></a>day03安排</h3><p>练习java代码 英语</p>
+<p>上午学了下循环 break continue  数组</p>
+<p>下午学习 java写基本排序 递归</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jzycloud/article/details/115675875">排序算法详解（Java实现 + 动画演示）_javagui排序算法动画-CSDN博客</a></p>
+<p>import java.util.Arrays;<br>import java.util.Scanner;</p>
+<p>应用上面2个jdk库</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/chengmo123/article/details/103800328">java引入同一文件夹下的其他类，以及其他文件下类的总结_java引用同文件夹下的类-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangzhezhilu001/article/details/110083215">JAVA中一个类的main函数调用另一个类的main函数_java调用另一个类的main方法-CSDN博客</a></p>
+<h3 id="今日感想"><a href="#今日感想" class="headerlink" title="今日感想"></a>今日感想</h3><p>刷牛客里 使用int 无法通过测试用例 用long</p>
+<p>测试输入一个132197398981238923贼长的字符时无法转换为int【int数据溢出】（真是偷袭）</p>
+<p>ACM模式和java真不习惯，终究还是被学校裹挟成为了java红利</p>
+<h3 id="杂乱"><a href="#杂乱" class="headerlink" title="杂乱"></a>杂乱</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>example</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> test12 <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 用于计数素数的个数</span>
+
+​        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">101</span><span class="token punctuation">;</span> num <span class="token operator">&lt;=</span> <span class="token number">200</span><span class="token punctuation">;</span> num<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>isPrime2<span class="token operator">*</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 调用isPrime方法检查是否为素数 是就执行 不是就不执行</span>
+​                 <span class="token punctuation">&#123;</span>
+​                <span class="token class-name">System</span><span class="token punctuation">.</span>*out<span class="token operator">*</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>num <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+​                count<span class="token operator">++</span><span class="token punctuation">;</span>
+​            <span class="token punctuation">&#125;</span>
+​        <span class="token punctuation">&#125;</span>
+
+​        <span class="token class-name">System</span><span class="token punctuation">.</span>*out<span class="token operator">*</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"\n101-200之间有 "</span> <span class="token operator">+</span> count <span class="token operator">+</span> <span class="token string">" 个素数。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+​    <span class="token punctuation">&#125;</span>
+​    <span class="token comment">//质数的分布具有特点，经过证明可以得到，（大于等于5的）质数一定和6的倍数相邻，一定是6x-1或6x-1。</span>
+<span class="token comment">// 利用这种特性。可以对整数进行筛选，只判断那些是6x-1或6x-1的整数是否为质数。</span>
+​    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isPrime</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​        <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+​        <span class="token punctuation">&#125;</span>
+​        <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+​        <span class="token punctuation">&#125;</span>
+​        <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> number <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+​        <span class="token punctuation">&#125;</span>
+
+​        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> i <span class="token operator">*</span> i <span class="token operator">&lt;=</span> number<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​            <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> number <span class="token operator">%</span> <span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+​            <span class="token punctuation">&#125;</span>
+​        <span class="token punctuation">&#125;</span>
+
+​        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+​    <span class="token punctuation">&#125;</span>
+<span class="token comment">//任一偶数一定能分解为2和其他偶数/奇数的积，因此一个数不能被2整除，那么这个数一定不能被其他偶数整除。</span>
+<span class="token comment">// 利用这个特点，可以对方法2进行改进，判断数n能否被小于sqrt(n)的奇数整除。</span>
+<span class="token comment">//方法2的时间复杂度是O(sqrt(n)/2)。</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isPrime2</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​        <span class="token keyword">return</span> n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">;</span>
+​    <span class="token punctuation">&#125;</span>
+​    <span class="token comment">//只需判断一个数能否被小于sqrt(n)的奇数整除</span>
+​    <span class="token keyword">int</span> sqrt <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token class-name">Math</span><span class="token punctuation">.</span>*sqrt<span class="token operator">*</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+​    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> sqrt<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> n <span class="token operator">%</span> i <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+​            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+​        <span class="token punctuation">&#125;</span>
+​    <span class="token punctuation">&#125;</span>
+​    <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/2023/10/25/java%E5%B7%A5%E7%A8%8B%E9%9C%80%E7%9F%A5%E9%9C%80%E4%BC%9A/">java工程需知需会</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://raw.githubusercontent.com/1Ymeman/1Yimage/main/img/image-20231018092352859.png" alt="1Ymeman" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>1Ymeman</h4>
+                <p>正在学习当网管中</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/10/30/%E6%8A%BD%E8%B1%A1%20-%20%E5%89%AF%E6%9C%AC/">学校安排水文章</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/25/java%E5%B7%A5%E7%A8%8B%E9%9C%80%E7%9F%A5%E9%9C%80%E4%BC%9A/">java工程需知需会</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/">计算机网络复习</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/24/%E6%8A%BD%E8%B1%A1/">太抽象了！震惊！这也能挖到漏洞！</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/22/nginx%E5%AD%A6%E4%B9%A0%E5%88%86%E4%BA%AB/">nginx学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/10/19/git%E4%BD%BF%E7%94%A8%E6%8E%92%E9%94%99/">git踩坑记录</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">时光机：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">January 2023</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签云：</h3>
+                    <a href="/tags/example/" style="font-size: 15px;">example</a> <a href="/tags/test/" style="font-size: 15px;">test</a> <a href="/tags/tool/" style="font-size: 20px;">tool</a> <a href="/tags/%E5%88%86%E4%BA%AB/" style="font-size: 20px;">分享</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 15px;">学习</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E6%B4%BE/" style="font-size: 10px;">抽象派</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" style="font-size: 15px;">网络安全</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%B0%8F%E5%AD%90/" style="font-size: 10px;">脚本小子</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%85%AB%E8%82%A1%E6%96%87/" style="font-size: 10px;">计算机网络八股文</a> <a href="/tags/%E8%BD%AC%E5%8F%91/" style="font-size: 15px;">转发</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">1Y</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":true,"night":true});</script>
+
+  </body>
+</html>
